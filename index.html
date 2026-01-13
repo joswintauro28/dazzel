@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DAZZEL BEAUTY PARLOUR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+
+    body {background: #ffffff; color: #fff; overflow-x: hidden;} /* ✅ MOBILE FIX */
+
+    /* Header */
+    header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000000; /* ✅ Fully black, no transparency */
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgb(0, 0, 0);
+    flex-wrap: wrap; /* ✅ MOBILE FIX */
+}
+
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #ffd1d1;
+      white-space: nowrap;
+    }
+
+    header h5 {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.4;
+      color: #ddd;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap; /* ✅ MOBILE FIX */
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    nav a:hover { color: #51006c; }
+
+    /* Profile Button */
+    .login-btn, .profile-btn {
+      padding: 10px 22px;
+      border: none;
+      background: #ac00db;
+      color: #000000;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .login-btn:hover, .profile-btn:hover { background: #490070; }
+
+    .profile-btn-container {
+      position: relative;
+    }
+
+    .profile-dropdown {
+      display: none;
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background: #000000;
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 1001;
+    }
+
+    .profile-dropdown a {
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+      color: #c20000;
+      border-bottom: 1px solid #7e7e7e;
+    }
+
+    .profile-dropdown a:hover {
+      background: #daaeae;
+      border-radius: 10px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; /* ✅ MOBILE FIX */
+      background: linear-gradient(to right, rgba(194,24,91,0.6), rgba(0,0,0,0.3)),
+      url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e') center/cover;
+      display: flex;
+      align-items: center;
+      padding: 140px 60px 60px; /* ✅ MOBILE FIX for header */
+      gap: 40px; /* ✅ MOBILE FIX */
+      flex-wrap: wrap; /* ✅ MOBILE FIX */
+    }
+
+    .hero-content {
+      max-width: 600px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h2 {
+      font-size: 50px;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .hero button {
+      padding: 14px 30px;
+      border: none;
+      background: #fff;
+      color: #c2185b;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    /* Map container fix */
+    .map-box {
+      width: 260px; /* ✅ MOBILE FIX */
+      max-width: 100%;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 260px;
+      border-radius: 100%;
+      border: 0;
+    }
+
+    /* Services */
+    .services {
+      padding: 100px 60px;
+      background: #000000;
+      text-align: center;
+    }
+
+    .service-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #696969;
+      padding: 30px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 80px 60px;
+      background: linear-gradient(to right, #c2185b, #e91e63);
+      text-align: center;
+    }
+
+    .cta button {
+      padding: 14px 35px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* WhatsApp */
+    .whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    /* ===========================
+       ✅ MOBILE ONLY (SAFE)
+    ============================ */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        gap: 10px;
+      }
+
+      nav a {
+        margin: 10px 15px 0 0;
+      }
+
+      .hero {
+        padding: 160px 20px 60px;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+
+      .services,
+      .cta {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <<h1>Dazzel Beauty Parlour</h1>
+  <h5>
+    Address: 1st Floor, Dazzle ladies beauty parlour, Harsha Complex,
+    Surathkal, Mangaluru, Karnataka 575014, India. <br>
+    <h5>Mon - Sat: 10:00 AM - 8:00 PM</h5>
+    <h6>Phone: 919113668125</h6>
+    </h5>
+
+  <nav>
+    <a href="afterlogin.php">Home</a>
+    <a href="afterloginservices.html">Services</a>
+    <a href="contact.php">Contact Us</a>
+  </nav>
+
+  <div class="profile-btn-container">
+  
+
+    </div>
+  </div>
+  <button onclick="window.location.href='login.php'" class="login-btn">Login</button>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h4 style="color:rgb(255, 235, 235);font-weight:bold;">Mon-Sat: 10:00 AM - 7:00 PM</h4>
+    
+    <h2>Reveal Your Natural Glow</h2>
+    <p>Experience premium beauty services tailored just for you. Where elegance meets expertise.</p>
+    <button onclick="bookNow()">Book Appointment</button>
+  </div>
+
+  <div class="map-wrapper">
+    <h3>Find Us Here:</h3>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.7128861069546!2d74.79833327461823!3d12.99020671447096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba351a9996c49c9%3A0xdc999c95caa7e855!2sDazzle%20Ladies%20Beauty%20Parlour!5e0!3m2!1sen!2snl!4v1768153529917!5m2!1sen!2snl"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <h3>Our Services</h3>
+  <div class="service-box">
+    <div class="card"><h4>Hair Styling</h4><p>Trendy haircuts & professional styling.</p></div>
+    <div class="card"><h4>Facials & Skincare</h4><p>Glow-enhancing treatments.</p></div>
+    <div class="card"><h4>Bridal Makeup</h4><p>Make your special day unforgettable.</p></div>
+    <div class="card"><h4>Manicure & Pedicure</h4><p>Luxury care for hands & feet.</p></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h3>Book Your Beauty Session Today</h3>
+  <button onclick="alert('Please login to experience our services.')">Contact Us</button>
+</section>
+
+<a class="whatsapp" href="https://wa.me/917996023299" target="_blank">💬 WhatsApp</a>
+
+<script>
+  function bookNow() {
+    alert("Kindly login to book an appointment");
+  }
+</script>
+
+</body>
+</html>
